@@ -1,9 +1,6 @@
-// import { useRouter } from 'next/router';
-
 import Layout from '../components/layout'
 
 const Index = () => {
-  // const router = useRouter();
 
   return (
     <Layout>
@@ -11,13 +8,13 @@ const Index = () => {
         Boilerplate Nextjs Tailwind
       </h1>
       <p>
-        Next.js Boilerplate is a starter code for your Next js project by
+        Next.js Boilerplate is a starter code for Next js project by
         putting developer experience first .{' '}
         <span role="img" aria-label="zap">
           ⚡️
         </span>{' '}
-        Made with Next.js, TypeScript, ESLint, Prettier, Husky, Lint-Staged,
-        VSCode, Netlify, PostCSS, Tailwind CSS.
+        Made with Next.js, TypeScript, ESLint,
+        VSCode, Tailwind CSS.
       </p>
     </Layout>
   );
