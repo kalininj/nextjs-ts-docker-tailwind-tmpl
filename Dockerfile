@@ -44,13 +44,12 @@ COPY --chown=node:node package*.json ./
 RUN \
   npm ci
 
-COPY --chown=node:node ./app ./app
-COPY --chown=node:node ./jest.config.js .
+COPY --chown=node:node ./src ./src
+COPY --chown=node:node ./jest.*.js .
 COPY --chown=node:node ./tsconfig.json .
-COPY --chown=node:node ./tsconfig.spec.json .
 
 RUN \
-  npm run test
+  npm run test:ci
 
 # Production stage
 # ---------------------------------------
