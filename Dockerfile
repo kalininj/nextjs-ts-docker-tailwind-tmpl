@@ -63,13 +63,15 @@ COPY --chown=node:node package*.json ./
 RUN \
   npm ci
 
-COPY --chown=node:node ./app ./app
-COPY --chown=node:node ./tsconfig.build.json .
+COPY --chown=node:node ./src ./src
+COPY --chown=node:node ./tsconfig.json .
+COPY --chown=node:node ./tailwind.config.js .
+COPY --chown=node:node ./postcss.config.js .
+COPY --chown=node:node ./next.config.js .
 
 RUN \
   npm run build
 
-COPY --chown=node:node ./app/api-doc.yml ./dist  
 
 ENV NODE_ENV=production
 RUN \
@@ -83,8 +85,8 @@ ENV NODE_ENV=production
 ENV SERVER_PORT=3000
 
 COPY --from=preproduction /node/node_modules ./node_modules
-COPY --from=preproduction /node/dist .
+COPY --from=preproduction /node/.next ./.next
 
 EXPOSE $SERVER_PORT
 
-CMD ["server.js" ]
+CMD ["./node_modules/next/dist/bin/next", "start"]
